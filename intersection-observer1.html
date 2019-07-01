@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Intersection Observer API</title>
+    <style type="text/css">
+       .contents {
+            position: absolute;
+            width: 700px;
+            height: 3725px;
+        }
+
+        #box {
+            position: absolute;
+            top: 2600px;
+            height: 200px;
+        }
+
+        .sampleBox {
+            position: relative;
+            left: 175px;
+            width: 150px;
+            background-color: rgb(245, 170, 140);
+            border: 2px solid rgb(201, 126, 17);
+            padding: 4px;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+        <main>
+            <div class="contents">
+                <div class="sampleBox" id="box">
+                </div>
+            </div>
+        </main>
+
+    <script>
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1.0
+        }
+        const observer = new IntersectionObserver(handleIntersect, options);
+
+        // Set things up.
+        window.addEventListener('load', (event) => {
+            const boxElement = document.querySelector('#box')
+            observer.observe(boxElement)
+        });
+        
+        function handleIntersect(entries, observer) {
+            entries.forEach((entry) => {
+                // Each entry describes an intersection change for one observed
+                // target element:
+                //   entry.boundingClientRect
+                //   entry.intersectionRatio
+                //   entry.intersectionRect
+                //   entry.isIntersecting
+                //   entry.rootBounds
+                //   entry.target
+                //   entry.time
+                entry.target.textContent = entry.intersectionRatio
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -39,3 +39,4 @@ Final
 - https://css-tricks.com/practical-css-scroll-snapping/
 - https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type
 - https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-align
+- https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API

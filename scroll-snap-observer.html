@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Intersection Observer API</title>
+    <style type="text/css">
+        html,
+        body,
+        main {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            scroll-snap-type: y mandatory;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+        main > div {
+            font-size: 3rem;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            scroll-snap-align: start;
+            flex: none;
+        }
+        main > div:nth-child(1) {
+            background-color: red;
+        }
+        main > div:nth-child(2) {
+            background-color: blue;
+        }
+        main > div:nth-child(3) {
+            background-color: greenyellow;
+        }
+        main > div:nth-child(4) {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div>
+           Section 1
+        </div>
+        <div>
+            Section 2
+        </div>
+        <div>
+            Section 3
+        </div>
+        <div>
+           Section 4
+        </div>
+    </main>
+
+    <script>
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1.0
+        }
+        const observer = new IntersectionObserver(handleIntersect, options);
+
+        // Set things up.
+        window.addEventListener('load', (event) => {
+            const boxElements = [...document.querySelectorAll('div')]
+            boxElements.forEach(div => {
+                observer.observe(div)
+            })
+           
+        });
+        
+        function handleIntersect(entries, observer) {
+            entries.forEach((entry) => {
+                // Each entry describes an intersection change for one observed
+                // target element:
+                //   entry.boundingClientRect
+                //   entry.intersectionRatio
+                //   entry.intersectionRect
+                //   entry.isIntersecting
+                //   entry.rootBounds
+                //   entry.target
+                //   entry.time
+                console.log(entry.target)
+            })
+        }
+    </script>
+</body>
+
+</html>
