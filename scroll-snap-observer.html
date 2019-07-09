@@ -82,7 +82,13 @@
                 //   entry.rootBounds
                 //   entry.target
                 //   entry.time
-                console.log(entry.target)
+                console.dir(entry.target)
+                if(entry.target.nextElementSibling) {
+                    setTimeout(() => {
+                        entry.target.nextElementSibling.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+                    }, 1000)
+                }
+
             })
         }
     </script>
